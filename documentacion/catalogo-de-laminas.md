@@ -52,7 +52,9 @@ vendedor lo dio, una línea de detalle. Hasta doce caben bien.
 ### `como`
 Cómo se va a lograr: las etapas o los estudios en tarjetas translúcidas sobre color.
 `encadenadas: true` pone flechas (uno lleva al otro); `false`, sin flechas (se contratan por
-separado). `rotuloDeEtapa`: "Etapa", "Paso" o "Propuesta".
+separado). `rotuloDeEtapa`: "Etapa", "Paso", "Estudio" o "Propuesta". Una etapa con `rotulo`
+("Análisis") lo usa en vez del numerado (pedido por ventas, 2026-11, **pendiente de revisión de
+operaciones**).
 **De su material:** si no describe etapas, son los estudios que se cotizan.
 
 ### `kpis`
@@ -66,6 +68,11 @@ grupos escritos. Un grupo puede traer `ejemplo` ("cluster", "correspondencias",
 `ejemplosDesplegables: true` (pedido por ventas, 2026-11, **pendiente de revisión de
 operaciones**): en la liga, el título del grupo abre su explicativa encima en vez de ir como
 lámina aparte; en el PDF las explicativas van como láminas, como siempre.
+`gruposDesplegables: true` (pedido por ventas, 2026-11, **pendiente de revisión de operaciones**):
+en la liga, cada grupo es un desplegable y la solución cabe en una lámina (`abierto: true` en un
+grupo lo deja abierto de entrada); en el PDF van abiertos y repartidos como siempre.
+Un KPI escrito `"**Nombre** · descripción"` pinta el nombre y su descripción debajo (pedido por
+ventas, 2026-11, **pendiente de revisión de operaciones**).
 
 ### `entregable`
 Capturas reales del dashboard que recibe el cliente, con la insignia "Entregable único".

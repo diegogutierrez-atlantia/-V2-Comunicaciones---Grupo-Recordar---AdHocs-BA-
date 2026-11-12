@@ -39,7 +39,7 @@ export const PROPUESTA: Propuesta | null = {
           titulo: "Cuidar la vida, honrar la memoria: una marca para cada momento",
           bajada:
             "Evidencia cuantitativa para definir el rol de Grupo Recordar y Prever Siempre dentro del nuevo grupo empresarial.",
-          soluciones: ["Estudio ad hoc de marcas · Funerario y Salud", "Pulso interno"],
+          soluciones: ["AdHoc desempeño e impacto en el mercado", "AdHoc impacto dentro de la organización (Pulso Interno)"],
           frase: "Decidir la arquitectura con lo que piensan clientes, prospectos y colaboradores, no con supuestos.",
         },
         {
@@ -145,23 +145,24 @@ export const PROPUESTA: Propuesta | null = {
           titulo: "Cómo lo vamos a lograr",
           texto:
             "La parte cuantitativa del proyecto, como soporte de la recomendación de arquitectura. Se integra con las entrevistas a profundidad que conduce V2 Comunicaciones.",
-          rotuloDeEtapa: "Etapa",
+          rotuloDeEtapa: "Estudio",
           encadenadas: true,
           etapas: [
             {
-              nombre: "ESTUDIO AD HOC DE MARCAS",
-              subtitulo: "Un solo cuestionario · Recordar, Prever Siempre y Primero",
-              texto: "Cada persona evalúa las tres marcas en la misma entrevista: reconocimiento, imagen, confianza y qué entiende del grupo, sin duplicar el ejercicio por negocio.",
+              nombre: "AdHoc desempeño e impacto en el mercado",
+              subtitulo: "Grupo Recordar, Prever Siempre y Primero",
+              texto: "Un solo cuestionario: cada persona evalúa las marcas funerarias y Primero, y los indicadores se obtienen una vez para funerario y otra para salud.",
               icono: Eye,
             },
             {
-              nombre: "PULSO INTERNO",
-              subtitulo: "Encuesta a colaboradores",
-              texto: "Identificación con su marca y con el grupo, claridad del rol de cada compañía y lectura de la integración, por compañía o unidad de negocio.",
+              nombre: "AdHoc impacto dentro de la organización",
+              subtitulo: "Pulso Interno · Encuesta a colaboradores",
+              texto: "Identificación con su empresa y con el grupo, claridad del rol de cada compañía y reacción a los escenarios de arquitectura.",
               icono: Users,
             },
             {
-              nombre: "ARQUITECTURA DE MARCA",
+              rotulo: "Análisis",
+              nombre: "Análisis de los dos estudios",
               subtitulo: "Todo junto",
               texto: "Se cruza la mirada de afuera con la de adentro para evaluar el peso de cada marca y fundamentar la recomendación de arquitectura.",
               icono: Network,
@@ -169,23 +170,31 @@ export const PROPUESTA: Propuesta | null = {
           ],
         },
         {
+          // Estudio 1, a la medida (no el BA de la casa): sin bloque de compra.
+          // Indicadores del vendedor (2026-11-12), con sus descripciones tal cual.
           tipo: "kpis",
-          titulo: "Indicadores · Reconocimiento y arquitectura de marca",
+          titulo: "Indicadores · Desempeño e impacto en el mercado",
           ejemplosDesplegables: true,
+          // Pedido del vendedor (2026-11-12): todo el estudio 1 en una lámina.
+          gruposDesplegables: true,
           soluciones: [
             {
-              // A la medida (no el BA de la casa): sin bloque de compra, armado
-              // sobre los objetivos del brief (retroalimentación de Ana, 2026-11-12).
-              nombre: "Estudio ad hoc · Grupo Recordar, Prever Siempre y Primero",
+              nombre: "AdHoc desempeño e impacto en el mercado",
               icono: Eye,
               grupos: [
                 {
+                  nombre: "Cada indicador se obtiene dos veces",
+                  abierto: true,
+                  kpis: [
+                    "**Funerario** · Grupo Recordar y Prever Siempre",
+                    "**Salud** · Primero",
+                  ],
+                },
+                {
                   nombre: "Conocimiento y reconocimiento",
                   kpis: [
-                    "Top of Mind por categoría (previsión exequial y salud)",
                     "Recordación espontánea de marcas",
                     "Reconocimiento asistido (nombre y logo)",
-                    "Asociación de cada marca con su categoría",
                     "Uso actual o pasado de los servicios de cada marca",
                   ],
                 },
@@ -195,8 +204,8 @@ export const PROPUESTA: Propuesta | null = {
                   kpis: [
                     "Percepción de marca (espontáneo)",
                     "Atributos asociados a cada marca",
-                    "Diferenciación entre Recordar y Prever Siempre",
                     "Mapa de posicionamiento de las marcas",
+                    "Mapa de correlación de atributos",
                   ],
                 },
                 {
@@ -214,24 +223,57 @@ export const PROPUESTA: Propuesta | null = {
                     "Nivel de confianza en cada marca",
                     "Reputación percibida",
                     "Disposición a recomendar (NPS de marca)",
+                    "Satisfacción neta (NSS)",
                     "Experiencias o comentarios negativos asociados",
                   ],
                 },
                 {
-                  nombre: "Entendimiento del grupo",
+                  nombre: "Lectura por zona y segmento",
                   kpis: [
-                    "Conocimiento de que las marcas pertenecen al mismo grupo",
-                    "Qué entiende que hace cada empresa: Recordar Previsión, Parques y Funerarias, Prever Siempre, Primero y Somos Primero IPS",
-                    "Confusión o duplicidad percibida entre marcas",
+                    "Marca con más peso por zona: compartida, solo Prever y solo Recordar",
+                    "Lectura por segmento: clientes Recordar, clientes Prever y prospectos",
                   ],
                 },
                 {
-                  nombre: "Insumos para la arquitectura",
+                  nombre: "Convivencia funerario–salud",
                   kpis: [
-                    "Efecto del respaldo del grupo en la confianza: suma o resta",
-                    "Aceptación de que salud y funerario compartan respaldo de marca",
-                    "Marca con más peso por zona: compartida, solo Prever y solo Recordar",
-                    "Lectura por segmento: clientes Recordar, clientes Prever y prospectos",
+                    "**Transferencia de confianza** · Si el respaldo funerario ayuda o frena a Primero",
+                    "**Encaje percibido** · Qué tan natural se ve que la misma empresa ofrezca ambos",
+                    "**Oferta conjunta** · Interés en un plan que combine servicio funerario y salud",
+                    "**Riesgo de asociación** · Rechazo a ligar salud con servicios funerarios",
+                  ],
+                },
+                {
+                  nombre: "Sombrilla del grupo",
+                  kpis: [
+                    "**Permiso de marca** · Si Grupo Recordar puede respaldar salud además del servicio funerario",
+                    "**Encaje percibido funerario–salud** · Qué tan natural se ve que ambos frentes vivan juntos",
+                    "**Una marca para los dos frentes** · Si una sola sombrilla puede cubrir servicio funerario y salud o conviene separarlas",
+                    "**Nombre ideal del grupo** · Reacción a sombrilla actual vs. una marca holding nueva",
+                  ],
+                },
+                {
+                  nombre: "Escenarios · Para todos",
+                  kpis: [
+                    "**Claridad** · Qué tan fácil es entender quién es quién",
+                    "**Confianza transferida** · Si el escenario sube o baja la confianza en la oferta",
+                    "**Atractivo e intención de afiliación** · Por escenario, comparado contra la situación actual",
+                  ],
+                },
+                {
+                  nombre: "Escenarios · Conocedores de cada marca",
+                  kpis: [
+                    "**Pérdida percibida** · Qué sienten que se perdería de Prever Siempre o de Recordar",
+                    "**Riesgo de migración** · Si cambiaría su opinión o su intención de afiliarse",
+                    "**Permanencia, en quienes ya están afiliados** · Lectura direccional con los casos que salgan en la muestra",
+                  ],
+                },
+                {
+                  nombre: "Escenarios · No conocedores y prospectos",
+                  kpis: [
+                    "**Consideración por escenario** · Qué modelo los acerca más al grupo",
+                    "**Endoso que suma o resta** · Valor de ver al grupo detrás de la marca",
+                    "**Plantear la asociación** · Reacción ante la relación Recordar–Prever Siempre",
                   ],
                 },
               ],
@@ -239,28 +281,38 @@ export const PROPUESTA: Propuesta | null = {
           ],
         },
         {
+          // Estudio 2. Los indicadores con descripción son los del vendedor
+          // (2026-11-12), tal cual; los demás ya estaban.
           tipo: "kpis",
-          titulo: "Indicadores · Pulso interno",
+          titulo: "Indicadores · Impacto dentro de la organización",
           soluciones: [
             {
-              nombre: "Pulso interno",
+              nombre: "AdHoc impacto dentro de la organización (Pulso Interno)",
               icono: Users,
               grupos: [
                 {
                   nombre: "Identidad y pertenencia",
                   kpis: [
-                    "Marca o compañía con la que se identifican",
-                    "Sentido de pertenencia a su compañía y al grupo",
-                    "Orgullo de trabajar en la compañía",
-                    "Recomendación como lugar de trabajo (eNPS)",
+                    "**Marca con la que se identifica** · Su empresa, Grupo Recordar o ninguna",
+                    "**Sentido de pertenencia al grupo** · Por empresa y por vicepresidencia",
+                    "**Orgullo y recomendación como lugar de trabajo** · eNPS por empresa",
                   ],
                 },
                 {
-                  nombre: "Conocimiento del grupo",
+                  nombre: "Entendimiento del grupo",
                   kpis: [
-                    "Conocimiento de las empresas del grupo y de qué hace cada una",
-                    "Claridad del rol de cada marca dentro del grupo",
-                    "Duplicidades o traslapes percibidos entre compañías",
+                    "**Conocimiento de las empresas del grupo** · Cuáles reconoce y qué hace cada una",
+                    "**Claridad del rol de su empresa** · Y de cómo se relaciona con las demás",
+                    "**Cómo presenta al grupo hacia afuera** · Con qué nombre se presenta ante clientes y aliados",
+                    "**Duplicidades percibidas** · Dónde ve confusión o competencia entre marcas",
+                  ],
+                },
+                {
+                  nombre: "Reacción a escenarios",
+                  kpis: [
+                    "**Escenario preferido** · Entre los mismos 5 modelos del público general",
+                    "**Pérdida percibida** · Qué se perdería de su marca en cada escenario",
+                    "**Disposición al cambio** · Qué tan listo ve a su equipo para una integración",
                   ],
                 },
                 {
@@ -275,16 +327,7 @@ export const PROPUESTA: Propuesta | null = {
                   nombre: "Colaboradores como embajadores",
                   kpis: [
                     "Atributos que asocian a su marca y al grupo",
-                    "Cómo presentan la compañía ante clientes",
                     "Disposición a recomendar los servicios del grupo",
-                  ],
-                },
-                {
-                  nombre: "La arquitectura vista desde adentro",
-                  kpis: [
-                    "Postura ante una marca única, respaldada o independiente",
-                    "Lo que no debe perderse de cada marca",
-                    "Cortes por compañía, unidad de negocio, área y antigüedad",
                   ],
                 },
               ],
@@ -397,7 +440,7 @@ export const PROPUESTA: Propuesta | null = {
             {
               etiqueta: "Conocedores de marcas",
               cifras: [{ valor: 300, rotulo: "casos" }],
-              estudio: ["Estudio ad hoc de marcas · Funerario y Salud"],
+              estudio: ["AdHoc desempeño e impacto en el mercado"],
               especificaciones: {
                 items: [
                   "Encuesta online (CAWI) con panel",
@@ -410,7 +453,7 @@ export const PROPUESTA: Propuesta | null = {
             {
               etiqueta: "Colaboradores",
               cifras: [{ valor: 100, rotulo: "colaboradores" }],
-              estudio: ["Pulso interno"],
+              estudio: ["AdHoc impacto dentro de la organización (Pulso Interno)"],
               especificaciones: {
                 items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 10 minutos"],
               },
@@ -433,7 +476,7 @@ export const PROPUESTA: Propuesta | null = {
             {
               etiqueta: "Encuesta externa",
               cifras: [{ valor: 400, rotulo: "casos" }],
-              estudio: ["Estudio ad hoc de marcas · Funerario y Salud"],
+              estudio: ["AdHoc desempeño e impacto en el mercado"],
               especificaciones: {
                 items: [
                   "Encuesta online (CAWI) con panel",
@@ -447,7 +490,7 @@ export const PROPUESTA: Propuesta | null = {
             {
               etiqueta: "Pulso interno",
               cifras: [{ valor: 150, rotulo: "colaboradores" }],
-              estudio: ["Pulso interno"],
+              estudio: ["AdHoc impacto dentro de la organización (Pulso Interno)"],
               especificaciones: {
                 items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 10 minutos"],
               },

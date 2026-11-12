@@ -50,7 +50,7 @@ export function EtapasDelMetodo({
             >
               <div className="flex items-center justify-between">
                 <span className="kicker-marca-claro font-heading text-kicker font-bold uppercase tracking-[0.2em]">
-                  {rotuloDeEtapa} {i + 1}
+                  {e.rotulo ?? `${rotuloDeEtapa} ${i + 1}`}
                 </span>
                 <Icono className="h-8 w-8 opacity-90 lg:h-10 lg:w-10" strokeWidth={1.5} aria-hidden />
               </div>

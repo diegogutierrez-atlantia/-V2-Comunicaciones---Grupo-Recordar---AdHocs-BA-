@@ -157,8 +157,10 @@ export function armarPropuesta(propuesta: Propuesta): ActoArmado[] {
       case "kpis": {
         const varias = l.soluciones.length > 1;
         const desplegables = l.ejemplosDesplegables === true && process.env.PROPUESTA_EN_PDF !== "1";
+        const plegados = l.gruposDesplegables === true && process.env.PROPUESTA_EN_PDF !== "1";
         return l.soluciones.flatMap((s, i) => {
-          const tramos = partirKpisEnLaminas(s.grupos);
+          // Plegados, los grupos caben en una lámina; abiertos (PDF), se reparten.
+          const tramos = plegados ? [s.grupos] : partirKpisEnLaminas(s.grupos);
           const ejemplosAbiertos = desplegables
             ? Object.fromEntries(
                 s.grupos.flatMap((g) => (g.ejemplo ? [[g.ejemplo, <ContenidoExplicativo key={g.ejemplo} cual={g.ejemplo} />]] : [])),
@@ -179,6 +181,7 @@ export function armarPropuesta(propuesta: Propuesta): ActoArmado[] {
                   indice={i}
                   parte={parteDe(t, tramos.length)}
                   ejemplos={ejemplosAbiertos}
+                  desplegables={plegados}
                 />,
               ),
             };

@@ -137,6 +137,12 @@ export interface EtapaDelMetodo {
   subtitulo?: string;
   texto: string;
   icono: LucideIcon;
+  /**
+   * Reemplaza el rótulo numerado ("Estudio 3") cuando la tarjeta no es una
+   * etapa más sino lo que las junta ("Análisis"). Pedido por ventas (2026-11),
+   * pendiente de revisión de operaciones.
+   */
+  rotulo?: string;
 }
 
 export interface LaminaComo {
@@ -162,6 +168,8 @@ export interface GrupoDeKpis {
   kpis: string[];
   /** Una lámina de la casa que explica el método; se abre desde el grupo. */
   ejemplo?: Explicativa;
+  /** Con `gruposDesplegables`: este grupo arranca abierto (un aviso que todos deben leer). */
+  abierto?: boolean;
 }
 
 export interface SolucionConKpis {
@@ -183,6 +191,12 @@ export interface LaminaKpis {
    * siempre. Pedido por ventas (2026-11), pendiente de revisión de operaciones.
    */
   ejemplosDesplegables?: boolean;
+  /**
+   * true: en la liga, cada grupo es un desplegable y la solución cabe en una
+   * sola lámina. En el PDF van abiertos y se reparten como siempre. Pedido por
+   * ventas (2026-11), pendiente de revisión de operaciones.
+   */
+  gruposDesplegables?: boolean;
 }
 
 export interface LaminaEntregable {
