@@ -238,7 +238,7 @@ export function armarPropuesta(propuesta: Propuesta): ActoArmado[] {
           rotulo: titulo,
           elemento: enPapel(
             clave,
-            <PropuestaEconomica titulo={titulo} opciones={l.opciones} moneda={moneda} pie={pieDeCotizacion(ficha.moneda)} />,
+            <PropuestaEconomica titulo={titulo} opciones={l.opciones} moneda={moneda} pie={pieDeCotizacion(ficha.moneda)} totalGeneral={l.totalGeneral} />,
           ),
         };
       }

@@ -39,14 +39,18 @@ export function PropuestaEconomica({
   opciones,
   moneda,
   pie,
+  totalGeneral,
 }: {
   titulo: string;
   opciones: OpcionEconomica[];
   /** "MXN + IVA", "USD". */
   moneda: string;
   pie: string;
+  /** La suma de todas las opciones, en una barra debajo (ver `LaminaEconomica`). */
+  totalGeneral?: { rotulo: string; monto: number };
 }) {
   for (const o of opciones) revisarCuentas(o);
+  if (totalGeneral) revisarTotalGeneral(opciones, totalGeneral.monto);
   const una = opciones.length === 1;
 
   return (
@@ -72,6 +76,15 @@ export function PropuestaEconomica({
           </article>
         ))}
       </div>
+
+      {totalGeneral ? (
+        <div
+          data-superficie="clara"
+          className="stagger rounded-3xl bg-surface p-4 text-ink shadow-[0_1rem_3rem_-1.5rem_color-mix(in_oklab,black_60%,transparent)] lg:p-5"
+        >
+          <BarraDeMonto rotulo={totalGeneral.rotulo} monto={totalGeneral.monto} moneda={moneda} grande />
+        </div>
+      ) : null}
 
       <p className="border-t border-border pt-3 text-[0.6875rem] text-muted">{pie}</p>
     </div>
@@ -198,6 +211,8 @@ function Costos({ opcion, moneda, arriba }: { opcion: OpcionEconomica; moneda: s
           {opcion.total.nota ? <p className="text-right text-kicker text-ink-2">{opcion.total.nota}</p> : null}
         </div>
       ) : null}
+
+      {opcion.letraChica ? <p className="text-[0.6875rem] leading-snug text-muted">{opcion.letraChica}</p> : null}
     </div>
   );
 }
@@ -340,6 +355,19 @@ function revisarCuentas(o: OpcionEconomica) {
   if (suma !== o.total.monto) {
     throw new Error(
       `En "${o.etiqueta}", los costos suman ${suma} y el total dice ${o.total.monto}. Si el total trae descuento, márcalo "sinSumar" con su nota; si no, pregúntale al vendedor cuál es el bueno.`,
+    );
+  }
+}
+
+/** El total debajo de las tarjetas: la suma de lo que cuesta cada opción. */
+function revisarTotalGeneral(opciones: OpcionEconomica[], monto: number) {
+  const deCadaUna = opciones.map((o) =>
+    o.total ? o.total.monto : sumar(o.tabla ? o.tabla.filas.map((f) => f.monto) : (o.costos ?? []).map((c) => c.monto)),
+  );
+  const suma = sumar(deCadaUna);
+  if (suma !== monto) {
+    throw new Error(
+      `Las opciones suman ${suma} y el total general dice ${monto}. Pregúntale al vendedor cuál es el bueno, o si trae descuento.`,
     );
   }
 }

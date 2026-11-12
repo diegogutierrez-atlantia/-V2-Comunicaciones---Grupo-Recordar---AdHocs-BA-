@@ -109,6 +109,9 @@ y el total en barra; sin `total`, cada costo es una alternativa en su propia bar
 `desglose` enseña sus partes. Una `tabla` da precios por renglón (país, ciudad, ola).
 **El total se comprueba contra la suma**; si trae descuento, `sinSumar: true` y su `nota`.
 **De su material:** su cotización. Si faltan precios, se preguntan.
+Pedidos por ventas (2026-11), **pendientes de revisión de operaciones**: `letraChica` en una opción
+(una aclaración al pie de su tarjeta) y `totalGeneral` en la lámina (un total debajo de las
+tarjetas cuando son estudios que se suman, no alternativas; se comprueba contra la suma).
 
 ### `estandar`
 El estándar de ejecución de la casa. Sólo se declara lo que cambia: `cambios.extension`

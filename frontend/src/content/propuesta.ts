@@ -289,13 +289,67 @@ export const PROPUESTA: Propuesta | null = {
             {
               titulo: "Método",
               icono: ClipboardList,
-              items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 5 minutos"],
+              items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 10 minutos"],
             },
           ],
           recuadro: [{ rotulo: "Muestra", valor: "Hasta 150 casos" }],
           cobertura: { tipo: "ninguna" },
         },
-        { tipo: "estandar", cambios: { extension: "**25 minutos** encuesta externa y **5 minutos** pulso interno" } },
+        {
+          // Copiado del cronograma que mandó el vendedor (2026-11-12), casilla por
+          // casilla: 10 días de levantamiento y la entrega al día 21.
+          tipo: "timeline",
+          cronogramas: [
+            {
+              nombre: "Cuantitativo",
+              actividades: [
+                { nombre: "Go de proyecto", desde: 1, hasta: 1, fase: "arranque" },
+                { nombre: "Kick Off con cliente", desde: 1, hasta: 1, fase: "arranque" },
+                { nombre: "Envío de materiales (conceptos)", desde: 2, hasta: 2, fase: "preparacion" },
+                { nombre: "Diseño de cuestionario", desde: 3, hasta: 4, fase: "preparacion" },
+                { nombre: "Revisión de cuestionario", desde: 5, hasta: 5, fase: "preparacion" },
+                { nombre: "Programación del cuestionario", desde: 6, hasta: 8, fase: "preparacion" },
+                { nombre: "Levantamiento", desde: 9, hasta: 18, fase: "campo" },
+                { nombre: "Validación de información", desde: 19, hasta: 19, fase: "analisis" },
+                { nombre: "Procesamiento de BDD", desde: 19, hasta: 19, fase: "analisis" },
+                { nombre: "Generación de Dashboard", desde: 20, hasta: 20, fase: "dashboard" },
+                { nombre: "Entrega de Dashboard", desde: 21, hasta: 21, fase: "entrega" },
+              ],
+            },
+          ],
+        },
+        {
+          tipo: "economica",
+          opciones: [
+            {
+              etiqueta: "Encuesta externa",
+              cifras: [{ valor: 400, rotulo: "casos" }],
+              estudio: ["Brand Awareness · Funerario", "Brand Awareness · Salud"],
+              especificaciones: {
+                items: [
+                  "Encuesta online (CAWI) con panel",
+                  "Cuestionario de 25 minutos",
+                  "Cada persona contesta los dos Brand Awareness",
+                  "Tres zonas: 200 / 100 / 100",
+                ],
+              },
+              costos: [{ rotulo: "Inversión", monto: 11176 }],
+            },
+            {
+              etiqueta: "Pulso interno",
+              cifras: [{ valor: 150, rotulo: "colaboradores" }],
+              estudio: ["Pulso interno"],
+              especificaciones: {
+                items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 10 minutos"],
+              },
+              costos: [{ rotulo: "Inversión *", monto: 3471 }],
+              letraChica:
+                "* No considera incentivos: se espera una tasa de respuesta alta, ya que la solicitud viene desde la propia empresa.",
+            },
+          ],
+          totalGeneral: { rotulo: "Total · Encuesta externa + Pulso interno", monto: 14647 },
+        },
+        { tipo: "estandar", cambios: { extension: "**25 minutos** encuesta externa y **10 minutos** pulso interno" } },
         { tipo: "terminos", desplegable: true },
       ],
     },

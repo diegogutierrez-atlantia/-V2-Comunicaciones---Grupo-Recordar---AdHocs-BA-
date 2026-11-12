@@ -296,12 +296,25 @@ export interface OpcionEconomica {
    * suma (descuento por compra conjunta), va `sinSumar: true` y su `nota`.
    */
   total?: { rotulo: string; monto: number; sinSumar?: boolean; nota?: string };
+  /**
+   * Una aclaración en letra chica, al pie de la tarjeta, que el vendedor quiere
+   * que el cliente lea ("no considera incentivos…"). Pedido por ventas
+   * (2026-11), pendiente de revisión de operaciones.
+   */
+  letraChica?: string;
 }
 
 export interface LaminaEconomica {
   tipo: "economica";
   titulo?: string;
   opciones: OpcionEconomica[];
+  /**
+   * Un total debajo de las tarjetas, cuando las opciones NO son alternativas
+   * sino estudios que se suman (encuesta externa + pulso interno). Se comprueba
+   * contra la suma de las opciones; si no cuadra, la lámina no se arma.
+   * Pedido por ventas (2026-11), pendiente de revisión de operaciones.
+   */
+  totalGeneral?: { rotulo: string; monto: number };
 }
 
 export interface LaminaEstandar {
