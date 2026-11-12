@@ -311,10 +311,12 @@ export interface LaminaEconomica {
   /**
    * Un total debajo de las tarjetas, cuando las opciones NO son alternativas
    * sino estudios que se suman (encuesta externa + pulso interno). Se comprueba
-   * contra la suma de las opciones; si no cuadra, la lámina no se arma.
+   * contra la suma de las opciones; si no cuadra, la lámina no se arma. Con
+   * descuento por compra conjunta, `sinSumar: true` y su `nota`, igual que el
+   * total de una opción.
    * Pedido por ventas (2026-11), pendiente de revisión de operaciones.
    */
-  totalGeneral?: { rotulo: string; monto: number };
+  totalGeneral?: { rotulo: string; monto: number; sinSumar?: boolean; nota?: string };
 }
 
 export interface LaminaEstandar {

@@ -111,7 +111,8 @@ y el total en barra; sin `total`, cada costo es una alternativa en su propia bar
 **De su material:** su cotización. Si faltan precios, se preguntan.
 Pedidos por ventas (2026-11), **pendientes de revisión de operaciones**: `letraChica` en una opción
 (una aclaración al pie de su tarjeta) y `totalGeneral` en la lámina (un total debajo de las
-tarjetas cuando son estudios que se suman, no alternativas; se comprueba contra la suma).
+tarjetas cuando son estudios que se suman, no alternativas; se comprueba contra la suma, salvo
+con descuento por compra conjunta: `sinSumar: true` y su `nota`).
 
 ### `estandar`
 El estándar de ejecución de la casa. Sólo se declara lo que cambia: `cambios.extension`

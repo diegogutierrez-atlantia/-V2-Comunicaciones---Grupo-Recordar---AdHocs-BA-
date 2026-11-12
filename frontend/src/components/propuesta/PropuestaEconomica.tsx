@@ -47,10 +47,10 @@ export function PropuestaEconomica({
   moneda: string;
   pie: string;
   /** La suma de todas las opciones, en una barra debajo (ver `LaminaEconomica`). */
-  totalGeneral?: { rotulo: string; monto: number };
+  totalGeneral?: { rotulo: string; monto: number; sinSumar?: boolean; nota?: string };
 }) {
   for (const o of opciones) revisarCuentas(o);
-  if (totalGeneral) revisarTotalGeneral(opciones, totalGeneral.monto);
+  if (totalGeneral && !totalGeneral.sinSumar) revisarTotalGeneral(opciones, totalGeneral.monto);
   const una = opciones.length === 1;
 
   return (
@@ -83,6 +83,7 @@ export function PropuestaEconomica({
           className="stagger rounded-3xl bg-surface p-4 text-ink shadow-[0_1rem_3rem_-1.5rem_color-mix(in_oklab,black_60%,transparent)] lg:p-5"
         >
           <BarraDeMonto rotulo={totalGeneral.rotulo} monto={totalGeneral.monto} moneda={moneda} grande />
+          {totalGeneral.nota ? <p className="mt-1 text-right text-kicker text-ink-2">{totalGeneral.nota}</p> : null}
         </div>
       ) : null}
 

@@ -12,7 +12,6 @@ import {
   Users,
 } from "lucide-react";
 
-import { kpisDeLaCasa } from "@/casa/kpis";
 import type { Propuesta } from "@/lib/propuesta/tipos";
 
 /**
@@ -22,8 +21,6 @@ import type { Propuesta } from "@/lib/propuesta/tipos";
  * de brief ACV20261106001 y la llamada con Ana Murillo del 2026-11-06.
  * Pendientes del vendedor: precios y semanas de campo.
  */
-
-const ba = kpisDeLaCasa("ba");
 
 export const PROPUESTA: Propuesta | null = {
   ficha: {
@@ -42,7 +39,7 @@ export const PROPUESTA: Propuesta | null = {
           titulo: "Cuidar la vida, honrar la memoria: una marca para cada momento",
           bajada:
             "Evidencia cuantitativa para definir el rol de Grupo Recordar y Prever Siempre dentro del nuevo grupo empresarial.",
-          soluciones: ["Brand Awareness · Funerario", "Brand Awareness · Salud", "Pulso interno"],
+          soluciones: ["Estudio ad hoc de marcas · Funerario y Salud", "Pulso interno"],
           frase: "Decidir la arquitectura con lo que piensan clientes, prospectos y colaboradores, no con supuestos.",
         },
         {
@@ -54,20 +51,20 @@ export const PROPUESTA: Propuesta | null = {
           piezas: [
             {
               etiqueta: "FUNERARIO",
-              titulo: "¿Qué vale cada marca exequial?",
-              texto: "Reconocimiento, confianza, reputación y preferencia de Grupo Recordar y Prever Siempre, por zona y por segmento.",
+              titulo: "¿Qué tanto se reconoce cada marca exequial?",
+              texto: "Qué tanto se conocen, se recuerdan y se distinguen Grupo Recordar y Prever Siempre, y qué confianza generan, por zona y por segmento.",
               icono: Eye,
             },
             {
               etiqueta: "SALUD",
-              titulo: "¿Qué vale Primero?",
-              texto: "El mismo diagnóstico de marca para el frente de salud y bienestar, leído con la misma vara.",
+              titulo: "¿Qué tanto se reconoce Primero?",
+              texto: "Qué tan conocida es Primero en salud y bienestar, y si la gente la relaciona con el negocio funerario.",
               icono: HeartHandshake,
             },
             {
               etiqueta: "ARQUITECTURA",
               titulo: "¿Cómo deben convivir los dos frentes?",
-              texto: "Los dos diagnósticos juntos dan la base para decidir la arquitectura de marca del grupo.",
+              texto: "Una sola lectura de las tres marcas da la base para decidir la arquitectura de marca del grupo.",
               icono: Network,
             },
           ],
@@ -89,7 +86,7 @@ export const PROPUESTA: Propuesta | null = {
           retos: [
             {
               etiqueta: "VALOR",
-              titulo: "Proteger el equity construido",
+              titulo: "Aprovechar el reconocimiento construido",
               texto: "Aprovechar el reconocimiento de Prever Siempre en el Eje Cafetero sin diluir el de Grupo Recordar.",
               icono: ShieldCheck,
             },
@@ -116,11 +113,11 @@ export const PROPUESTA: Propuesta | null = {
               icono: Eye,
             },
             {
-              texto: "¿Cuál marca se prefiere, cuál genera mayor intención de compra y qué tan diferenciada y relevante es cada una?",
+              texto: "¿Qué atributos se asocian a cada marca y qué tan diferenciadas están entre sí?",
               icono: Trophy,
             },
             {
-              texto: "¿Cómo cambia el valor de cada marca por zona y por segmento?",
+              texto: "¿Cómo cambia el reconocimiento de cada marca por zona y por segmento?",
               icono: MapPin,
               detalle: "Zona compartida, solo Prever y solo Recordar · clientes Recordar, clientes Prever y prospectos.",
             },
@@ -130,7 +127,7 @@ export const PROPUESTA: Propuesta | null = {
               detalle: "Recordar Previsión, Parques y Funerarias, Prever Siempre, Primero y Somos Primero IPS.",
             },
             {
-              texto: "¿Qué valor tiene Primero en salud y bienestar, y cuánto le suma o le resta su relación con el negocio funerario?",
+              texto: "¿Qué tanto se reconoce Primero en salud y bienestar, y le suma o le resta su relación con el negocio funerario?",
               icono: HeartHandshake,
             },
             {
@@ -152,58 +149,89 @@ export const PROPUESTA: Propuesta | null = {
           encadenadas: true,
           etapas: [
             {
-              nombre: "BRAND AWARENESS · FUNERARIO",
-              subtitulo: "Grupo Recordar y Prever Siempre",
-              texto: "Reconocimiento, recordación, confianza, reputación, preferencia e intención de compra de cada marca, leídos por zona y por segmento.",
+              nombre: "ESTUDIO AD HOC DE MARCAS",
+              subtitulo: "Un solo cuestionario · Recordar, Prever Siempre y Primero",
+              texto: "Cada persona evalúa las tres marcas en la misma entrevista: reconocimiento, imagen, confianza y qué entiende del grupo, sin duplicar el ejercicio por negocio.",
               icono: Eye,
-            },
-            {
-              nombre: "BRAND AWARENESS · SALUD",
-              subtitulo: "Primero",
-              texto: "Los mismos indicadores para el frente de salud y bienestar, para comparar los dos negocios con la misma vara.",
-              icono: HeartHandshake,
             },
             {
               nombre: "PULSO INTERNO",
               subtitulo: "Encuesta a colaboradores",
-              texto: "Identificación con la marca, sentido de pertenencia al grupo y claridad del rol de cada compañía, por compañía o unidad de negocio.",
+              texto: "Identificación con su marca y con el grupo, claridad del rol de cada compañía y lectura de la integración, por compañía o unidad de negocio.",
               icono: Users,
             },
             {
               nombre: "ARQUITECTURA DE MARCA",
               subtitulo: "Todo junto",
-              texto: "Se cruzan ambos diagnósticos para evaluar el peso de cada marca y fundamentar la recomendación de arquitectura.",
+              texto: "Se cruza la mirada de afuera con la de adentro para evaluar el peso de cada marca y fundamentar la recomendación de arquitectura.",
               icono: Network,
             },
           ],
         },
         {
           tipo: "kpis",
-          titulo: "Indicadores · Equity de marca",
+          titulo: "Indicadores · Reconocimiento y arquitectura de marca",
           ejemplosDesplegables: true,
           soluciones: [
             {
-              ...ba,
-              nombre: "Brand Awareness · Funerario (Recordar y Prever Siempre) y Salud (Primero)",
+              // A la medida (no el BA de la casa): sin bloque de compra, armado
+              // sobre los objetivos del brief (retroalimentación de Ana, 2026-11-12).
+              nombre: "Estudio ad hoc · Grupo Recordar, Prever Siempre y Primero",
+              icono: Eye,
               grupos: [
-                ...ba.grupos
-                  .filter(
-                    (g) =>
-                      g.nombre !== "Perfil de cliente de la marca por nivel de satisfacción" &&
-                      g.nombre !== "Arquetipo de marca",
-                  )
-                  .map((g) =>
-                    g.nombre === "Análisis de atributos"
-                      ? { ...g, kpis: ["Percepción de marca (espontáneo)", ...g.kpis] }
-                      : g,
-                  ),
+                {
+                  nombre: "Conocimiento y reconocimiento",
+                  kpis: [
+                    "Top of Mind por categoría (previsión exequial y salud)",
+                    "Recordación espontánea de marcas",
+                    "Reconocimiento asistido (nombre y logo)",
+                    "Asociación de cada marca con su categoría",
+                    "Uso actual o pasado de los servicios de cada marca",
+                  ],
+                },
+                {
+                  nombre: "Imagen y atributos",
+                  ejemplo: "correspondencias",
+                  kpis: [
+                    "Percepción de marca (espontáneo)",
+                    "Atributos asociados a cada marca",
+                    "Diferenciación entre Recordar y Prever Siempre",
+                    "Mapa de posicionamiento de las marcas",
+                  ],
+                },
+                {
+                  nombre: "Ajuste con lo que pide la categoría",
+                  ejemplo: "match-index",
+                  kpis: [
+                    "Atributos más valorados al elegir previsión exequial y salud",
+                    "Atributos reconocidos en cada marca",
+                    "Brechas entre lo que se valora y lo que cada marca entrega",
+                  ],
+                },
                 {
                   nombre: "Confianza y reputación",
                   kpis: [
-                    "Nivel de confianza en la marca",
+                    "Nivel de confianza en cada marca",
                     "Reputación percibida",
-                    "Diferenciación frente a la competencia",
-                    "Relevancia para el hogar",
+                    "Disposición a recomendar (NPS de marca)",
+                    "Experiencias o comentarios negativos asociados",
+                  ],
+                },
+                {
+                  nombre: "Entendimiento del grupo",
+                  kpis: [
+                    "Conocimiento de que las marcas pertenecen al mismo grupo",
+                    "Qué entiende que hace cada empresa: Recordar Previsión, Parques y Funerarias, Prever Siempre, Primero y Somos Primero IPS",
+                    "Confusión o duplicidad percibida entre marcas",
+                  ],
+                },
+                {
+                  nombre: "Insumos para la arquitectura",
+                  kpis: [
+                    "Efecto del respaldo del grupo en la confianza: suma o resta",
+                    "Aceptación de que salud y funerario compartan respaldo de marca",
+                    "Marca con más peso por zona: compartida, solo Prever y solo Recordar",
+                    "Lectura por segmento: clientes Recordar, clientes Prever y prospectos",
                   ],
                 },
               ],
@@ -220,11 +248,44 @@ export const PROPUESTA: Propuesta | null = {
               grupos: [
                 {
                   nombre: "Identidad y pertenencia",
-                  kpis: ["Marca o compañía con la que se identifican", "Sentido de pertenencia al grupo"],
+                  kpis: [
+                    "Marca o compañía con la que se identifican",
+                    "Sentido de pertenencia a su compañía y al grupo",
+                    "Orgullo de trabajar en la compañía",
+                    "Recomendación como lugar de trabajo (eNPS)",
+                  ],
                 },
                 {
-                  nombre: "Claridad de roles",
-                  kpis: ["Claridad del rol de cada marca dentro del grupo", "Cortes por compañía o unidad de negocio"],
+                  nombre: "Conocimiento del grupo",
+                  kpis: [
+                    "Conocimiento de las empresas del grupo y de qué hace cada una",
+                    "Claridad del rol de cada marca dentro del grupo",
+                    "Duplicidades o traslapes percibidos entre compañías",
+                  ],
+                },
+                {
+                  nombre: "Lectura de la integración",
+                  kpis: [
+                    "Conocimiento de la llegada de Prever Siempre al grupo",
+                    "Expectativas y preocupaciones ante la integración",
+                    "Claridad con la que se ha comunicado el cambio",
+                  ],
+                },
+                {
+                  nombre: "Colaboradores como embajadores",
+                  kpis: [
+                    "Atributos que asocian a su marca y al grupo",
+                    "Cómo presentan la compañía ante clientes",
+                    "Disposición a recomendar los servicios del grupo",
+                  ],
+                },
+                {
+                  nombre: "La arquitectura vista desde adentro",
+                  kpis: [
+                    "Postura ante una marca única, respaldada o independiente",
+                    "Lo que no debe perderse de cada marca",
+                    "Cortes por compañía, unidad de negocio, área y antigüedad",
+                  ],
                 },
               ],
             },
@@ -260,9 +321,9 @@ export const PROPUESTA: Propuesta | null = {
               items: ["Encuesta online (CAWI) con panel", "Cuestionario de 25 minutos", "Protocolo cuidadoso para una categoría sensible"],
             },
             {
-              titulo: "Brand Awareness",
+              titulo: "Un solo cuestionario",
               icono: Layers,
-              items: ["Cada persona contesta los dos: funerario (Recordar y Prever Siempre) y salud (Primero)"],
+              items: ["Cada persona evalúa las tres marcas en la misma entrevista: Recordar, Prever Siempre y Primero"],
             },
           ],
           recuadro: [
@@ -319,17 +380,56 @@ export const PROPUESTA: Propuesta | null = {
           ],
         },
         {
+          // Del Excel del vendedor (2026-11-12): ajustada al presupuesto de la
+          // clienta, con descuento por compra conjunta. Va primero: es la base.
           tipo: "economica",
+          titulo: "Propuesta base · Ajustada al presupuesto",
           opciones: [
             {
-              etiqueta: "Encuesta externa",
-              cifras: [{ valor: 400, rotulo: "casos" }],
-              estudio: ["Brand Awareness · Funerario", "Brand Awareness · Salud"],
+              etiqueta: "Conocedores de marcas",
+              cifras: [{ valor: 300, rotulo: "casos" }],
+              estudio: ["Estudio ad hoc de marcas · Funerario y Salud"],
               especificaciones: {
                 items: [
                   "Encuesta online (CAWI) con panel",
                   "Cuestionario de 25 minutos",
-                  "Cada persona contesta los dos Brand Awareness",
+                  "Un solo cuestionario con las tres marcas",
+                ],
+              },
+              costos: [{ rotulo: "Inversión", monto: 8823.53 }],
+            },
+            {
+              etiqueta: "Colaboradores",
+              cifras: [{ valor: 100, rotulo: "colaboradores" }],
+              estudio: ["Pulso interno"],
+              especificaciones: {
+                items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 10 minutos"],
+              },
+              costos: [{ rotulo: "Inversión *", monto: 2353 }],
+              letraChica:
+                "* No considera incentivos: se espera una tasa de respuesta alta, ya que la solicitud viene desde la propia empresa.",
+            },
+          ],
+          totalGeneral: {
+            rotulo: "Total · Precio por compra conjunta",
+            monto: 10000,
+            sinSumar: true,
+            nota: "Incluye descuento por contratar los dos estudios juntos.",
+          },
+        },
+        {
+          tipo: "economica",
+          titulo: "Propuesta completa · Todo lo solicitado",
+          opciones: [
+            {
+              etiqueta: "Encuesta externa",
+              cifras: [{ valor: 400, rotulo: "casos" }],
+              estudio: ["Estudio ad hoc de marcas · Funerario y Salud"],
+              especificaciones: {
+                items: [
+                  "Encuesta online (CAWI) con panel",
+                  "Cuestionario de 25 minutos",
+                  "Un solo cuestionario con las tres marcas",
                   "Tres zonas: 200 / 100 / 100",
                 ],
               },
