@@ -136,7 +136,10 @@ function RutaPorSemanas({ cronograma, degradado }: { cronograma: Cronograma; deg
                   className="rounded-md py-0.5 text-center font-heading text-kicker font-semibold"
                   style={{ backgroundColor: COLOR_DE_SEMANA[s % COLOR_DE_SEMANA.length], color: "var(--color-sobre-relleno)" }}
                 >
-                  Semana {s + 1}
+                  {/* En celular la columna de una semana mide ~3.5rem y "Semana 1"
+                      se encimaba con la de al lado (cinco semanas o más). */}
+                  <span className="sm:hidden">S{s + 1}</span>
+                  <span className="hidden sm:inline">Semana {s + 1}</span>
                 </span>
               ))}
             </div>
