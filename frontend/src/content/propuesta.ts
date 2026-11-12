@@ -325,17 +325,23 @@ export const PROPUESTA: Propuesta | null = {
               icono: Layers,
               items: ["Cada persona evalúa las tres marcas en la misma entrevista: Recordar, Prever Siempre y Primero"],
             },
+            {
+              titulo: "Reparto por zona",
+              icono: MapPin,
+              items: ["La propuesta base conserva la misma proporción que la completa: 50% zona compartida, 25% solo Prever y 25% solo Recordar"],
+            },
           ],
           recuadro: [
-            { rotulo: "Muestra total", valor: "400 casos" },
-            { rotulo: "Por zona", valor: "200 / 100 / 100" },
+            // Base: proporcional a la completa, como pidió el vendedor (2026-11-12).
+            { rotulo: "Propuesta base", valor: "300 casos · 150 / 75 / 75" },
+            { rotulo: "Propuesta completa", valor: "400 casos · 200 / 100 / 100" },
           ],
           cobertura: {
             tipo: "colombia",
             zonas: [
-              { etiqueta: "Compartida (200)", ciudades: ["Bogotá", "Cali", "Medellín"] },
-              { etiqueta: "Solo Prever (100)", ciudades: ["Manizales", "Armenia", "Pereira"] },
-              { etiqueta: "Solo Recordar (100)", ciudades: ["Barranquilla", "Cartagena", "Bucaramanga"] },
+              { etiqueta: "Compartida (150 base · 200 completa)", ciudades: ["Bogotá", "Cali", "Medellín"] },
+              { etiqueta: "Solo Prever (75 base · 100 completa)", ciudades: ["Manizales", "Armenia", "Pereira"] },
+              { etiqueta: "Solo Recordar (75 base · 100 completa)", ciudades: ["Barranquilla", "Cartagena", "Bucaramanga"] },
             ],
           },
         },
@@ -353,7 +359,10 @@ export const PROPUESTA: Propuesta | null = {
               items: ["Encuesta online (CAWI) con liga interna", "Cuestionario de 10 minutos"],
             },
           ],
-          recuadro: [{ rotulo: "Muestra", valor: "Hasta 150 casos" }],
+          recuadro: [
+            { rotulo: "Propuesta base", valor: "100 colaboradores" },
+            { rotulo: "Propuesta completa", valor: "150 colaboradores" },
+          ],
           cobertura: { tipo: "ninguna" },
         },
         {
@@ -414,7 +423,7 @@ export const PROPUESTA: Propuesta | null = {
             rotulo: "Total · Precio por compra conjunta",
             monto: 10000,
             sinSumar: true,
-            nota: "Incluye descuento por contratar los dos estudios juntos.",
+            nota: "Precio sin descuento: $11,176.47 USD · Incluye descuento por contratar los dos estudios juntos.",
           },
         },
         {
