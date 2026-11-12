@@ -9,6 +9,9 @@ const nextConfig: NextConfig = {
   // `.next` abierto. Sin esto, correr el PDF mientras dev está prendido
   // rompía las dos cosas.
   distDir: process.env.NEXT_DIST_DIR || ".next",
+  // Avisa a la propuesta que se está armando para el PDF: lo que en la liga va
+  // en desplegables (los términos, si la propuesta lo pide) ahí sale abierto.
+  env: { PROPUESTA_EN_PDF: process.env.NEXT_DIST_DIR === ".next-pdf" ? "1" : "" },
 };
 
 export default nextConfig;

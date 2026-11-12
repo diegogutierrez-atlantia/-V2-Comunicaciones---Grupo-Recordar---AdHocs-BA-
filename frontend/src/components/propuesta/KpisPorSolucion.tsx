@@ -1,5 +1,7 @@
 import { estiloDeIcono } from "@/lib/story/colores-de-icono";
-import type { GrupoDeKpis, SolucionConKpis } from "@/lib/propuesta/tipos";
+import type { ReactNode } from "react";
+import type { Explicativa, GrupoDeKpis, SolucionConKpis } from "@/lib/propuesta/tipos";
+import { EjemploQueSeAbre } from "./EjemploQueSeAbre";
 import { COLOR_DE_PUNTO, PUNTO } from "./estilos";
 
 /**
@@ -57,7 +59,14 @@ export function KpisPorSolucion({
   grupos,
   indice,
   parte,
+  ejemplos,
 }: {
+  /**
+   * Las explicaciones ya dibujadas, por método, cuando la propuesta pide que se
+   * abran desde el título del grupo (`ejemplosDesplegables`). Sin esto, el
+   * grupo dice "Con ejemplo" y la explicativa va como lámina aparte.
+   */
+  ejemplos?: Partial<Record<Explicativa, ReactNode>>;
   titulo: string;
   solucion: SolucionConKpis;
   /** Los grupos que van en esta lámina (todos, o un tramo si no cupo en una). */
@@ -108,8 +117,12 @@ export function KpisPorSolucion({
         {grupos.map((g) => (
           <section key={g.nombre} className="mb-7 break-inside-avoid border-t border-border pt-4">
             <h4 className="flex items-center gap-3 font-heading text-body font-semibold text-tinta-marca">
-              <span className="flex-1">{g.nombre}</span>
-              {g.ejemplo ? (
+              {g.ejemplo && ejemplos?.[g.ejemplo] ? (
+                <EjemploQueSeAbre titulo={g.nombre}>{ejemplos[g.ejemplo]}</EjemploQueSeAbre>
+              ) : (
+                <span className="flex-1">{g.nombre}</span>
+              )}
+              {g.ejemplo && !ejemplos?.[g.ejemplo] ? (
                 <span className="shrink-0 rounded-full border border-border px-3 py-0.5 font-heading text-[0.6875rem] font-semibold uppercase tracking-[0.12em]">
                   Con ejemplo
                 </span>

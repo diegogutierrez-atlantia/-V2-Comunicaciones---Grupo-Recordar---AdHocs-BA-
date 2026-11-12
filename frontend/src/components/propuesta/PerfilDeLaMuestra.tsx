@@ -3,6 +3,8 @@ import { Check, Globe2, Users } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { COLOR_DE_REGION, MapaDeMexico, type GrupoDelMapa } from "@/components/viz/MapaDeMexico";
 import { CONTORNO_DE_ESTADO } from "@/lib/viz/estados-mexico";
+import { MapaDeColombia, type ZonaDelMapa } from "@/components/viz/MapaDeColombia";
+import { CIUDADES_DE_COLOMBIA } from "@/lib/viz/ciudades-colombia";
 import { estiloDeIcono } from "@/lib/story/colores-de-icono";
 import type { Cobertura, Renglon, TarjetaConLista } from "@/lib/propuesta/tipos";
 import { COLOR_DE_PUNTO, PUNTO, TARJETA } from "./estilos";
@@ -176,6 +178,32 @@ function VistaDeCobertura({ cobertura }: { cobertura: Cobertura }) {
       <MapaConAlto>
         <MapaDeMexico grupos={grupos} grupoDeEstado={grupoDeEstado} leyendaAbajo llenarAlto />
       </MapaConAlto>
+    );
+  }
+
+  if (cobertura.tipo === "colombia") {
+    for (const z of cobertura.zonas) {
+      for (const c of z.ciudades) {
+        if (!CIUDADES_DE_COLOMBIA[c]) {
+          throw new Error(
+            `La ciudad "${c}" no está en el mapa de Colombia. Las que hay: ${Object.keys(CIUDADES_DE_COLOMBIA).join(", ")}.`,
+          );
+        }
+      }
+    }
+    // Categóricos y no de región: los seis de región son morados vecinos, y tres
+    // zonas con puntos chicos no se distinguían. Escritos completos, en orden.
+    const COLOR_DE_ZONA = ["var(--cat-1)", "var(--cat-2)", "var(--cat-3)", "var(--cat-4)", "var(--cat-5)"];
+    const zonas: ZonaDelMapa[] = cobertura.zonas.map((z, i) => ({
+      ...z,
+      color: COLOR_DE_ZONA[i % COLOR_DE_ZONA.length],
+    }));
+    return (
+      // Más piso que el de México: el país es alto y angosto, y sus nombres
+      // salen con línea guía; con 22rem se leían en letra de nota al pie.
+      <div className="flex min-h-[30rem] flex-1 flex-col">
+        <MapaDeColombia zonas={zonas} />
+      </div>
     );
   }
 

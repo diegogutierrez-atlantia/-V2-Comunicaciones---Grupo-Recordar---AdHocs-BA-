@@ -1,3 +1,4 @@
+import { ChevronDown } from "lucide-react";
 import { estiloDeIcono } from "@/lib/story/colores-de-icono";
 import type { BloqueDeTerminos } from "@/casa/terminos";
 import { COLOR_DE_PUNTO, PUNTO } from "./estilos";
@@ -46,6 +47,70 @@ export function partirTerminosEnLaminas(bloques: BloqueDeTerminos[]): BloqueDeTe
   }
   if (actual.length > 0) laminas.push(actual);
   return laminas;
+}
+
+/**
+ * La variante en desplegables, para una propuesta que la pide (`desplegable`
+ * en la lámina `terminos`): todos los bloques en una sola lámina, cada uno
+ * cerrado bajo su título. Excepción a "nada se abre con un clic", pedida por
+ * ventas (2026-11) y pendiente de revisión de operaciones. Sólo en la liga: el
+ * PDF arma los términos abiertos (ver `armar.tsx`). El texto es el mismo de
+ * `casa/terminos.ts`, sin tocar.
+ */
+export function TerminosDesplegables({ bloques }: { bloques: BloqueDeTerminos[] }) {
+  return (
+    <div className="flex flex-1 flex-col gap-8 lg:gap-10">
+      <header className="stagger flex flex-wrap items-baseline gap-x-4 gap-y-2">
+        <h2 className="font-heading text-h2 font-extrabold text-ink">Términos y condiciones del proyecto</h2>
+      </header>
+
+      <div className="stagger flex flex-col">
+        {bloques.map((b) => {
+          const Icono = b.icono;
+          return (
+            <details key={b.titulo} className="group border-t border-border">
+              <summary className="flex cursor-pointer list-none items-center gap-4 py-4 [&::-webkit-details-marker]:hidden">
+                <span
+                  aria-hidden
+                  data-superficie="honda"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full"
+                  style={estiloDeIcono(1)}
+                >
+                  <Icono className="h-5 w-5" strokeWidth={1.75} />
+                </span>
+                <h3 className="flex-1 font-heading text-lead font-bold leading-snug text-ink">{b.titulo}</h3>
+                <ChevronDown
+                  aria-hidden
+                  className="h-5 w-5 shrink-0 text-tinta-marca transition-transform group-open:rotate-180"
+                  strokeWidth={2}
+                />
+              </summary>
+
+              <div className="gap-x-14 pb-6 lg:columns-2">
+                {b.secciones.map((s, i) => (
+                  <div key={s.subtitulo ?? i} className="mb-4 break-inside-avoid">
+                    {s.subtitulo ? (
+                      <h4 className="mb-2 font-heading text-body font-bold text-tinta-marca">{s.subtitulo}</h4>
+                    ) : null}
+                    <ul className="space-y-2.5">
+                      {s.parrafos.map((p) => (
+                        <li key={p} className="flex break-inside-avoid gap-3 text-body leading-relaxed text-ink-2">
+                          <span aria-hidden className={PUNTO} style={COLOR_DE_PUNTO} />
+                          <span>
+                            <TextoConNegritas texto={p} clase="font-bold text-ink" />
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </details>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 export function TerminosYCondiciones({

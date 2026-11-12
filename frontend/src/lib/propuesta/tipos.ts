@@ -177,6 +177,12 @@ export interface LaminaKpis {
   titulo: string;
   /** Una por columna. Lo de la casa se toma con `kpisDeLaCasa()` y se ajusta. */
   soluciones: SolucionConKpis[];
+  /**
+   * true: en la liga, el título de un grupo con `ejemplo` abre su explicación
+   * encima, en vez de ir como lámina aparte. En el PDF van como láminas, como
+   * siempre. Pedido por ventas (2026-11), pendiente de revisión de operaciones.
+   */
+  ejemplosDesplegables?: boolean;
 }
 
 export interface LaminaEntregable {
@@ -198,6 +204,12 @@ export type Cobertura =
   | { tipo: "nielsen" }
   | { tipo: "plazas"; plazas: { estado: string; etiqueta: string }[] }
   | { tipo: "paises"; paises: { clave: string; nombre: string }[] }
+  /**
+   * Colombia con las ciudades marcadas, cada una con el color de su zona. Las
+   * ciudades, por su nombre en `lib/viz/ciudades-colombia.ts`. Pedido por
+   * ventas (2026-11), pendiente de revisión de operaciones.
+   */
+  | { tipo: "colombia"; zonas: { etiqueta: string; ciudades: string[] }[] }
   | { tipo: "ninguna" };
 
 export interface LaminaPerfil {
@@ -305,6 +317,14 @@ export interface LaminaEstandar {
 
 export interface LaminaTerminos {
   tipo: "terminos";
+  /**
+   * true: en la liga, una sola lámina con cada bloque en un desplegable. En el
+   * PDF salen completos y abiertos, repartidos como siempre (un desplegable
+   * cerrado en una foto es un término que el cliente no recibe). Fuera de la
+   * regla de "nada se abre con un clic": pedido por ventas (2026-11), pendiente
+   * de revisión de operaciones.
+   */
+  desplegable?: boolean;
 }
 
 export interface TramoDeCreditos {

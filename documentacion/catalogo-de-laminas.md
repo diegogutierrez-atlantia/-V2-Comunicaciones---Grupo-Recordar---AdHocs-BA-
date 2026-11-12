@@ -63,6 +63,9 @@ catálogo se toman de la casa: `kpisDeLaCasa("ua" | "ba" | "ba-complementarios" 
 grupos escritos. Un grupo puede traer `ejemplo` ("cluster", "correspondencias",
 "match-index"): su lámina explicativa se agrega sola justo después de esos KPIs.
 **De su material:** qué estudio es y si pide quitar o agregar KPIs.
+`ejemplosDesplegables: true` (pedido por ventas, 2026-11, **pendiente de revisión de
+operaciones**): en la liga, el título del grupo abre su explicativa encima en vez de ir como
+lámina aparte; en el PDF las explicativas van como láminas, como siempre.
 
 ### `entregable`
 Capturas reales del dashboard que recibe el cliente, con la insignia "Entregable único".
@@ -79,7 +82,9 @@ A quién se entrevista y dónde: renglones de perfilamiento con palomita, tarjet
 cruces, duración, método…: sólo las que aplican), el recuadro punteado con alcance y muestras,
 y la cobertura: `nielsen` (mapa por áreas Nielsen), `plazas` (sólo esos estados iluminados:
 `estado` con su nombre común, "Ciudad de México", "Nuevo León", "México" para el Estado de
-México), `paises` (baldosas) o `ninguna`.
+México), `paises` (baldosas), `colombia` (el país con sus ciudades marcadas por zona, de
+`lib/viz/ciudades-colombia.ts`; pedido por ventas, 2026-11, **pendiente de revisión de
+operaciones**) o `ninguna`.
 **De su material:** a quién y dónde. Las muestras van como texto ("250 / 200"). Si faltan, se preguntan.
 
 ### `cuotas`
@@ -112,7 +117,9 @@ El estándar de ejecución de la casa. Sólo se declara lo que cambia: `cambios.
 
 ### `terminos`
 Los términos y condiciones de la casa, en la moneda de la ficha, completos y a la vista: se
-reparten solos en las láminas que hagan falta (hoy, cuatro). No lleva campos. Va siempre.
+reparten solos en las láminas que hagan falta (hoy, cuatro). Va siempre.
+`desplegable: true` (pedido por ventas, 2026-11, **pendiente de revisión de operaciones**): en la
+liga, una sola lámina con cada bloque en un desplegable; en el PDF salen abiertos como siempre.
 
 ### `maia`
 La calculadora de herramientas de MAIA por créditos: `herramientas` (siglas de `casa/maia.ts`)

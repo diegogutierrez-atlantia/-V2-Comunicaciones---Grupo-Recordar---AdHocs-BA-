@@ -13,7 +13,11 @@ import { ZonaDeCuotas } from "@/components/propuesta/ZonaDeCuotas";
 import { Cronogramas } from "@/components/propuesta/Cronogramas";
 import { PropuestaEconomica } from "@/components/propuesta/PropuestaEconomica";
 import { EstandarDeEjecucion } from "@/components/propuesta/EstandarDeEjecucion";
-import { TerminosYCondiciones, partirTerminosEnLaminas } from "@/components/propuesta/TerminosYCondiciones";
+import {
+  TerminosDesplegables,
+  TerminosYCondiciones,
+  partirTerminosEnLaminas,
+} from "@/components/propuesta/TerminosYCondiciones";
 import { CalculadoraDeMaia } from "@/components/propuesta/CalculadoraDeMaia";
 import { CierreDePropuesta } from "@/components/propuesta/CierreDePropuesta";
 import { CAPTURAS_DEL_ENTREGABLE } from "@/casa/entregable";
@@ -152,8 +156,14 @@ export function armarPropuesta(propuesta: Propuesta): ActoArmado[] {
         };
       case "kpis": {
         const varias = l.soluciones.length > 1;
+        const desplegables = l.ejemplosDesplegables === true && process.env.PROPUESTA_EN_PDF !== "1";
         return l.soluciones.flatMap((s, i) => {
           const tramos = partirKpisEnLaminas(s.grupos);
+          const ejemplosAbiertos = desplegables
+            ? Object.fromEntries(
+                s.grupos.flatMap((g) => (g.ejemplo ? [[g.ejemplo, <ContenidoExplicativo key={g.ejemplo} cual={g.ejemplo} />]] : [])),
+              )
+            : undefined;
           const deKpis = tramos.map((grupos, t): LaminaArmada => {
             const c = claveDe("kpis");
             const sufijo = tramos.length > 1 ? ` (${t + 1})` : "";
@@ -162,10 +172,18 @@ export function armarPropuesta(propuesta: Propuesta): ActoArmado[] {
               rotulo: (varias ? `${l.titulo} · ${s.nombre}` : l.titulo) + sufijo,
               elemento: enPapel(
                 c,
-                <KpisPorSolucion titulo={l.titulo} solucion={s} grupos={grupos} indice={i} parte={parteDe(t, tramos.length)} />,
+                <KpisPorSolucion
+                  titulo={l.titulo}
+                  solucion={s}
+                  grupos={grupos}
+                  indice={i}
+                  parte={parteDe(t, tramos.length)}
+                  ejemplos={ejemplosAbiertos}
+                />,
               ),
             };
           });
+          if (desplegables) return deKpis;
           const ejemplos = s.grupos.flatMap((g) => (g.ejemplo && !explicativasPuestas.has(g.ejemplo) ? [g.ejemplo] : []));
           ejemplos.forEach((e) => explicativasPuestas.add(e));
           return [...deKpis, ...ejemplos.map(explicativa)];
@@ -231,6 +249,14 @@ export function armarPropuesta(propuesta: Propuesta): ActoArmado[] {
           elemento: enPapel(clave, <EstandarDeEjecucion tarjetas={tarjetasDelEstandar(l.cambios)} />),
         };
       case "terminos": {
+        if (l.desplegable && process.env.PROPUESTA_EN_PDF !== "1") {
+          const c = claveDe("terminos");
+          return {
+            clave: c,
+            rotulo: "Términos y condiciones",
+            elemento: enPapel(c, <TerminosDesplegables bloques={terminosYCondiciones(ficha.moneda)} />),
+          };
+        }
         const tramos = partirTerminosEnLaminas(terminosYCondiciones(ficha.moneda));
         return tramos.map((bloques, t) => {
           const c = claveDe("terminos");
